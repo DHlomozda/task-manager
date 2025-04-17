@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>About worker "{{ worker.username }}"</h1>
+  {% if worker.tasks.all %}
+    <h2>{{ worker.username }} works for these tasks</h2>
+    <ul>
+    {% for task in worker.tasks.all %}
+      <li><a href="{% url 'task:task-detail' task.id %}">{{ task }}</a></li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no tasks yet</p>
+  {% endif %}
+  <a href="{% url 'task:worker-delete' worker.id %}" class="btn btn-primary">Delete {{ worker.username }}</a>
+{% endblock %}

@@ -21,7 +21,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 from task.views import index, TaskTypeListView, PositionListView, TaskTypeUpdateView, TaskTypeDetailView, \
     TaskTypeDeleteView, TaskTypeCreateView, PositionDetailView, PositionUpdateView, PositionDeleteView, \
     PositionCreateView, WorkerListView, WorkerCreateView, WorkerUpdateView, WorkerDetailView, WorkerDeleteView, \
-    TaskListView, TaskDetailView, TaskCreateView, TaskUpdateView, TaskDeleteView
+    TaskListView, TaskDetailView, TaskCreateView, TaskUpdateView, TaskDeleteView, TaskCompleteStatusView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,7 +35,7 @@ urlpatterns = [
     path("position/create/", PositionCreateView.as_view(), name="position-create"),
     path("position/<int:pk>/detail/", PositionDetailView.as_view(), name="position-detail"),
     path("position/<int:pk>/update/", PositionUpdateView.as_view(), name="position-update"),
-    path("position/<int:pk>/delete/", PositionDeleteView.as_view(), name="position-detail"),
+    path("position/<int:pk>/delete/", PositionDeleteView.as_view(), name="position-delete"),
     path("worker/", WorkerListView.as_view(), name="worker-list"),
     path("worker/create/", WorkerCreateView.as_view(), name="worker-create"),
     path("worker/<int:pk>/update/", WorkerUpdateView.as_view(), name="worker-update"),
@@ -46,6 +46,8 @@ urlpatterns = [
     path("task/create/", TaskCreateView.as_view(), name="task-create"),
     path("task/<int:pk>/update/", TaskUpdateView.as_view(), name="task-update"),
     path("task/<int:pk>/delete/", TaskDeleteView.as_view(), name="task-delete"),
+    path("task/<int:pk>/complete/", TaskCompleteStatusView.as_view(), name="task-complete")
+
 
 ] + debug_toolbar_urls()
 

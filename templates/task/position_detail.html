@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>About position "{{ position }}"</h1>
+  {% if position.workers.all %}
+    <h2>Developer who works on this position:</h2>
+    <ul>
+    {% for worker in position.workers.all %}
+      <li>{{ worker.username }}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no workers yet</p>
+  {% endif %}
+{% endblock %}
