@@ -2,46 +2,60 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
-    Task type list
-    <a href="{% url 'task:taskType-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  {% if taskType_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
-
-      {% for taskType in taskType_list %}
-        <tr>
-          <td>
-            <a href="{% url 'task:taskType-detail'  taskType.id %}">{{ taskType.id }}</a>
-          </td>
-          <td>
-            {{ taskType.name }}
-          </td>
-          <td>
-            <a href="{% url 'task:taskType-update' taskType.id %}">Update</a>
-          </td>
-          <td>
-            <a href="{% url 'task:taskType-delete' taskType.id %}">Delete</a>
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
-    <div class="mb-2">
-      <form action="" method="get">
-        {{ search_form|crispy }}
-        <input type="submit" class="bnt btn-primary">
-      </form>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-primary">Task Type List</h1>
+        <a href="{% url 'task:taskType-create' %}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Create Task Type
+        </a>
     </div>
-  {% else %}
-    <p>There are no taskType</p>
-  {% endif %}
 
+    {% if taskType_list %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle border">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for taskType in taskType_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'task:taskType-detail' taskType.id %}" class="text-decoration-none text-primary">
+                            {{ taskType.id }}
+                        </a>
+                    </td>
+                    <td>{{ taskType.name }}</td>
+                    <td>
+                        <a href="{% url 'task:taskType-update' taskType.id %}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i> Update
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'task:taskType-delete' taskType.id %}" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-4">
+        <form action="" method="get">
+            {{ search_form|crispy }}
+          <input type="submit" value="Search" class="btn btn-primary">
+        </form>
+    </div>
+    {% else %}
+    <div class="alert alert-warning text-center" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i> No task types found.
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

@@ -23,6 +23,7 @@
       </div>
       <div class="card-footer text-end">
         <a href="{% url 'task:task-list' %}" class="btn btn-secondary">Back to Task List</a>
+        <a href="{% url 'task:task-update' task.id %}" class="btn btn-primary">Update</a>
         <a href="{% url 'task:task-delete' task.id %}" class="btn btn-danger">Delete</a>
       </div>
     </div>
