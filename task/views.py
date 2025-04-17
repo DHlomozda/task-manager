@@ -8,7 +8,13 @@ from task.models import TaskType, Position, Worker, Task
 
 
 def index(request):
-    return HttpResponse("Ok")
+    num_task = Task.objects.count()
+    num_workers = Worker.objects.count()
+    context = {
+        "num_task": num_task,
+        "num_workers": num_workers
+    }
+    return render(request, "task/index.html", context=context)
 
 
 class TaskTypeListView(LoginRequiredMixin, generic.ListView):

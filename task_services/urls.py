@@ -20,5 +20,6 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("task.urls", namespace="task"))
+    path("", include("task.urls", namespace="task")),
+    path("accounts/", include("django.contrib.auth.urls")),
 ] + debug_toolbar_urls()

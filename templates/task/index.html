@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Hello to task manager!</h1>
+    {% if user.is_authenticated %}
+      <p>Count of task: {{ num_task }}</p>
+      <p>Count of workers: {{ num_workers }}</p>
+  {% endif %}
+
+{% endblock %}
