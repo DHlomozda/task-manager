@@ -1,72 +1,58 @@
-<style>
-    .sidebar {
-        height: 100vh;
-        background: linear-gradient(180deg, #1d3557, #457b9d);
-        color: white;
-        padding: 20px 10px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        overflow-y: auto;
-    }
-
-</style>
-
 <div class="sidebar">
-    <div class="position-sticky">
-        <div class="text-center py-3">
-            <h3 class="text-light">Task Manager</h3>
-        </div>
-        <ul class="nav flex-column">
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link active text-light" href="{{ user.get_absolute_url }}">
-                    <i class="bi bi-person-circle"></i> User: {{ user.get_username }}
-                </a>
-            </li>
-            <li class="nav-item">
-                <form action="{% url 'logout' %}" method="post" class="nav-link">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger w-100">
-                        <i class="bi bi-box-arrow-right"></i> Logout
-                    </button>
-                </form>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a class="nav-link btn btn-primary w-100 text-light" href="{% url 'login' %}">
-                    <i class="bi bi-box-arrow-in-right"></i> Login
-                </a>
-            </li>
-            {% endif %}
-            <hr class="text-light">
-            <li class="nav-item">
-                <a class="nav-link text-light" href="{% url 'task:index' %}">
-                    <i class="bi bi-house-door"></i> Home
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="{% url 'task:position-list' %}">
-                    <i class="bi bi-briefcase"></i> All Positions
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="{% url 'task:taskType-list' %}">
-                    <i class="bi bi-tags"></i> All Task Types
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="{% url 'task:worker-list' %}">
-                    <i class="bi bi-people"></i> All Workers
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="{% url 'task:task-list' %}">
-                    <i class="bi bi-check2-square"></i> All Tasks
-                </a>
-            </li>
-        </ul>
+  <div class="position-sticky">
+    <div class="text-center py-3">
+      <h3 class="text-light">Task Manager</h3>
     </div>
+    <ul class="nav flex-column">
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link active text-light" href="{{ user.get_absolute_url }}">
+            <i class="bi bi-person-circle"></i> User: {{ user.get_username }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <form action="{% url 'logout' %}" method="post" class="nav-link">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger w-100">
+              <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+          </form>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary w-100 text-light" href="{% url 'login' %}">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+          </a>
+        </li>
+      {% endif %}
+      <hr class="text-light">
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{% url 'task:index' %}">
+          <i class="bi bi-house-door"></i> Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{% url 'task:position-list' %}">
+          <i class="bi bi-briefcase"></i> All Positions
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{% url 'task:taskType-list' %}">
+          <i class="bi bi-tags"></i> All Task Types
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{% url 'task:worker-list' %}">
+          <i class="bi bi-people"></i> All Workers
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{% url 'task:task-list' %}">
+          <i class="bi bi-check2-square"></i> All Tasks
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 

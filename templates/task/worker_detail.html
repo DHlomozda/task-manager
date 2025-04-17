@@ -1,35 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4">
+  <div class="container mt-4">
     <div class="card shadow-sm border-0">
-        <div class="card-header bg-primary text-white text-center">
-            <h1>About Worker "{{ worker.username }}"</h1>
-        </div>
-        <div class="card-body">
-            {% if worker.tasks.all %}
-            <h3 class="text-success">Tasks Assigned to {{ worker.username }}</h3>
-            <ul class="list-group list-group-flush">
-                {% for task in worker.tasks.all %}
-                <li class="list-group-item">
-                    <i class="bi bi-list-task"></i>
-                    <a href="{% url 'task:task-detail' task.id %}" class="text-decoration-none text-primary">
-                        {{ task }}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-            {% else %}
-            <div class="alert alert-warning text-center mt-3" role="alert">
-                <i class="bi bi-exclamation-triangle-fill"></i> There are no tasks assigned yet.
-            </div>
-            {% endif %}
-        </div>
-        <div class="card-footer text-center">
-            <a href="{% url 'task:worker-delete' worker.id %}" class="btn btn-danger">
-                <i class="bi bi-trash-fill"></i> Delete {{ worker.username }}
-            </a>
-        </div>
+      <div class="card-header bg-primary text-white text-center">
+        <h1>About Worker "{{ worker.username }}"</h1>
+      </div>
+      <div class="card-body">
+        {% if worker.tasks.all %}
+          <h3 class="text-success">Tasks Assigned to {{ worker.username }}</h3>
+          <ul class="list-group list-group-flush">
+            {% for task in worker.tasks.all %}
+              <li class="list-group-item">
+                <i class="bi bi-list-task"></i>
+                <a href="{% url 'task:task-detail' task.id %}" class="text-decoration-none text-primary">
+                  Task: {{ task }}; Completed: {{ task.is_completed }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="alert alert-warning text-center mt-3" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i> There are no tasks assigned yet.
+          </div>
+        {% endif %}
+      </div>
+      <div class="card-footer text-center">
+        <a href="{% url 'task:worker-delete' worker.id %}" class="btn btn-danger">
+          <i class="bi bi-trash-fill"></i> Delete {{ worker.username }}
+        </a>
+        <a type="submit" href="{% url 'task:worker-list'%}" class="btn btn-primary">Cancel</a>
+      </div>
     </div>
-</div>
+  </div>
 {% endblock %}
