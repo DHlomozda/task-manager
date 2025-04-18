@@ -1,0 +1,62 @@
+[
+{
+    "model": "task.position",
+    "pk": 1,
+    "fields": {
+        "name": "developer"
+    }
+},
+{
+    "model": "task.position",
+    "pk": 2,
+    "fields": {
+        "name": "project_manager"
+    }
+},
+{
+    "model": "task.tasktype",
+    "pk": 1,
+    "fields": {
+        "name": "bug"
+    }
+},
+{
+    "model": "task.tasktype",
+    "pk": 3,
+    "fields": {
+        "name": "feature"
+    }
+},
+{
+    "model": "task.worker",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$p7tJrugAm4w1zn0v6Vq1QI$0w0eZOhmEoNxgaPWg5jnqIIsg9gD7gOhqv6Lg2dMaH0=",
+        "last_login": "2025-04-17T15:13:38.832Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "dfa@fas.fdsf",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-04-16T18:34:04.821Z",
+        "position": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task.task",
+    "pk": 1,
+    "fields": {
+        "name": "to do list",
+        "description": "fasdgfrgrg",
+        "deadline": "2025-04-14T18:00:00Z",
+        "is_completed": false,
+        "priority": "Medium",
+        "task_type": 1,
+        "assignees": []
+    }
+}
+]

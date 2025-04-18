@@ -37,7 +37,7 @@ class TaskTypeListView(LoginRequiredMixin, generic.ListView):
         queryset = TaskType.objects.all()
         name = self.request.GET.get("name")
         if name:
-            return queryset.filter(name__icontains=name)
+            queryset = queryset.filter(name__icontains=name)
         return queryset
 
 
@@ -84,7 +84,7 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
         queryset = Task.objects.all()
         name = self.request.GET.get("name")
         if name:
-            return queryset.filter(name__icontains=name)
+            queryset = queryset.filter(name__icontains=name)
         return queryset
 
 
@@ -129,7 +129,7 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
         queryset = Worker.objects.all()
         username = self.request.GET.get("username")
         if username:
-            return queryset.filter(username__icontains=username)
+            queryset = queryset.filter(username__icontains=username)
         return queryset
 
 
@@ -179,7 +179,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
         queryset = Task.objects.all()
         name = self.request.GET.get("username")
         if name:
-            return queryset.filter(name__icontains=name)
+            queryset = queryset.filter(name__icontains=name)
         return queryset
 
 
