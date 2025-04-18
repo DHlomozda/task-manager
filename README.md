@@ -1,21 +1,19 @@
 # Task manager project
-## To login use: 
-Login: admin; Password: 123
-
 
 ## Project about task manager. 
-You can create worker who works on certain position.
- You can add new task and put some information about it, choose task type
+This is a pet project about task manager. Here you can add task, worker with position and task types.
 
 ## Installation
 Python 3.12 must be already installed
 
 ```shell
+python manage.py createsuperuser # to create user for login
 git clone https://github.com/DHlomozda/task-manager.git
 cd task_manager_project
 pyhton -m venv .venv
 venv\Scripts\Activate
 pip install -r requirements.txt
+python manage.py populate_data # to fill data base with fake data
 python manage.py runserver # starts Django server
 ```
 
@@ -25,4 +23,3 @@ python manage.py runserver # starts Django server
 
 ## Demo
 ![Website Interface](demo.png)
->>>>>>> develop
