@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-warning text-white text-center">
+            <h1>About Position: "{{ position }}"</h1>
+        </div>
+        <div class="card-body">
+            {% if position.workers.all %}
+            <h3 class="text-success">Developers Working on This Position:</h3>
+            <ul class="list-group list-group-flush">
+                {% for worker in position.workers.all %}
+                <li class="list-group-item">
+                    <i class="bi bi-person-circle"></i>
+                    {{ worker.username }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <div class="alert alert-warning text-center mt-3" role="alert">
+                <i class="bi bi-exclamation-triangle-fill"></i> No workers assigned to this position yet.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

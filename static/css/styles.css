@@ -1,0 +1,38 @@
+body {
+    background: linear-gradient(135deg, #1d3557, #457b9d);
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    box-sizing: border-box;
+}
+
+
+.container-fluid {
+    background: rgba(255, 243, 200, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 20px;
+}
+
+.link-to-page {
+    float: right;
+    margin: 0 2px 0 2px;
+}
+
+.sidebar {
+    height: 100vh;
+    background: linear-gradient(180deg, #1d3557, #457b9d);
+    color: white;
+    padding: 20px 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}

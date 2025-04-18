@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="text-primary">Position List</h1>
+      <a href="{% url 'task:position-create' %}" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Create Position
+      </a>
+    </div>
+
+    {% if position_list %}
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle border">
+          <thead class="table-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for position in position_list %}
+            <tr>
+              <td>
+                <a href="{% url 'task:position-detail' position.id %}" class="text-decoration-none text-primary">
+                  {{ position.id }}
+                </a>
+              </td>
+              <td>{{ position.name }}</td>
+              <td>
+                <a href="{% url 'task:position-update' position.id %}" class="btn btn-warning btn-sm">
+                  <i class="bi bi-pencil-square"></i> Update
+                </a>
+              </td>
+              <td>
+                <a href="{% url 'task:position-delete' position.id %}" class="btn btn-danger btn-sm">
+                  <i class="bi bi-trash-fill"></i> Delete
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4">
+        <form action="" method="get">
+          {{ search_form|crispy }}
+          <input type="submit" value="Search" class="btn btn-primary">
+        </form>
+      </div>
+    {% else %}
+      <div class="alert alert-warning text-center" role="alert">
+        There are no positions available.
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
