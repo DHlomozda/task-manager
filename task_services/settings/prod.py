@@ -10,6 +10,7 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
+SECRET_KEY = os.environ["SECRET_KEY"]
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
@@ -21,6 +22,9 @@ DATABASES = {
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.environ.get('POSTGRES_HOST'),
         'PORT': int(os.environ.get('POSTGRES_DB_PORT')),
+        'OPTIONS': {
+            'sslmode': 'required',
+        }
     }
 }
 # SECURE_SSL_REDIRECT = True
