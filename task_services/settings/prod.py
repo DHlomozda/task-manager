@@ -22,9 +22,6 @@ DATABASES = {
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.environ.get('POSTGRES_HOST'),
         'PORT': int(os.environ.get('POSTGRES_DB_PORT')),
-        'OPTIONS': {
-            'sslmode': 'required',
-        }
     }
 }
 SECURE_SSL_REDIRECT = True

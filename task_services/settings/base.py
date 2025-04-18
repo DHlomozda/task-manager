@@ -22,8 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-5v@^5cx9#g0)k_p$6&u_@^na0-2&2ec@ceolpv7=g*q11v(&fg'
-SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')
 load_dotenv(BASE_DIR / '.env')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')
+
 
 INTERNAL_IPS = [
     "127.0.0.1",
