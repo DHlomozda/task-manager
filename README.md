@@ -24,4 +24,4 @@ python manage.py runserver # starts Django server
 * Managing task
 
 ## Demo
-![Website Interface](demo.png)
+![Website Interface](logo2.png)
