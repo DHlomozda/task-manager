@@ -1,3 +1,13 @@
+/* Global styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --background-color: #f5f6fa;
+    --text-color: #2c3e50;
+    --border-color: #dcdde1;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 body {
     background: linear-gradient(135deg, #1d3557, #457b9d);
     color: white;
@@ -13,9 +23,6 @@ body {
 }
 
 
-.container-fluid {
-
-}
 
 .link-to-page {
     float: right;
@@ -38,20 +45,64 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     margin: 20px;
     padding: 20px;
-    height: 100vh;
+    height: 70vh;
     width: 100%;
     background: linear-gradient(45deg, #d2001a, #7462ff, #23d5ab);
     background-size: 300% 300%;
     animation: color 12s ease-in-out infinite;
 }
+
 @keyframes color {
-    0%{
+    0% {
         background-position: 0 50%;
     }
-    50%{
+    50% {
         background-position: 100% 50%;
     }
-    100%{
+    100% {
         background-position: 0 50%;
     }
+}
+
+
+.page-link {
+    border: 2px solid green;
+}
+
+
+.pagination-info {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.pagination-link {
+    padding: 5px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.pagination-link:hover:not(.disabled) {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.pagination-link.active {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.pagination-link.disabled {
+    color: #999;
+    cursor: not-allowed;
+    pointer-events: none;
 }
