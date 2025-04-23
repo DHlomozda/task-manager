@@ -14,11 +14,7 @@ body {
 
 
 .container-fluid {
-    background: rgba(255, 243, 200, 0.8);
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    margin: 20px;
-    padding: 20px;
+
 }
 
 .link-to-page {
@@ -35,4 +31,27 @@ body {
     top: 0;
     left: 0;
     overflow-y: auto;
+}
+
+.container-body {
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 20px;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(45deg, #d2001a, #7462ff, #23d5ab);
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
+}
+@keyframes color {
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
 }
