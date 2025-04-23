@@ -11,7 +11,7 @@ faker = Faker()
 
 def populate_data(num_tasktype=10, num_position=5, num_workers=20, num_task=50):
     for _ in range(num_tasktype):
-        TaskType.objects.create(name=faker.word())
+        TaskType.objects.get_or_create(name=faker.word())
 
     for _ in range(num_position):
         Position.objects.create(name=faker.job())
