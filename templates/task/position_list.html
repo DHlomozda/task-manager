@@ -57,8 +57,10 @@
         There are no positions available.
       </div>
     {% endif %}
-    {% block pagination %}
-      {% include "includes/pagination.html" %}
-    {% endblock %}
+    <div class="mt-2">
+      {% block pagination %}
+        {% include "includes/pagination.html" %}
+      {% endblock %}
+    </div>
   </div>
 {% endblock %}
