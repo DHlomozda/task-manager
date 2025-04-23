@@ -176,7 +176,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Task.objects.all()
+        queryset = Task.objects.all().prefetch_related("assignees").order_by("id")
         name = self.request.GET.get("username")
         if name:
             queryset = queryset.filter(name__icontains=name)
