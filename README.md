@@ -2,6 +2,7 @@
 
 ## Project about task manager. 
 This is a pet project about task manager. Here you can add task, worker with position and task types.
+Use login: admin password: 123
 
 ## Installation
 Python 3.12 must be already installed
