@@ -23,9 +23,12 @@
           <a class="nav-link btn btn-primary w-100 text-light" href="{% url 'accounts:login' %}">
             <i class="bi bi-box-arrow-in-right"></i> Login
           </a>
+          <a class="nav-link btn btn-primary w-100 text-light" href="{% url 'accounts:signup' %}">
+            <i class="bi bi-box-arrow-in-right"></i> SignUp
+          </a>
         </li>
       {% endif %}
-    
+
       <hr class="text-light">
       <li class="nav-item">
         <a class="nav-link text-light" href="{% url 'task:home' %}">
