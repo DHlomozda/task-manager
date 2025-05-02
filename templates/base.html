@@ -11,24 +11,25 @@
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'js/burger-menu.js' %}">
+
 </head>
 
 <body>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-2">
-
+<div class="row">
+  <div>
+    {% block extra_scripts %}
+      <script src="{% static 'js/burger-menu.js' %}"></script>
       {% block sidebar %}
-        {% include "includes/sidebar.html" %}
+        {% include "includes/header.html" %}
       {% endblock %}
+    {% endblock %}
 
-    </div>
-    <div class="col-sm-9">
+  </div>
+  <div>
 
-      {% block content %}
-      {% endblock %}
-    </div>
-
+    {% block content %}
+    {% endblock %}
   </div>
 </div>
 </body>
