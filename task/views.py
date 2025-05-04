@@ -195,8 +195,7 @@ class TaskCreateView(LoginRequiredMixin, generic.CreateView):
 
 class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Task
-    fields = "__all__"
-
+    form_class = TaskForm
     def get_success_url(self):
         return reverse("task:task-detail", kwargs={"pk": self.object.pk})
 
