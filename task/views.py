@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
-from task.form import TaskTypeSearchForm, PositionSearchForm, WorkerSearchForm, TaskSearchForm
+from task.form import TaskTypeSearchForm, PositionSearchForm, WorkerSearchForm, TaskSearchForm, TaskForm
 from task.models import TaskType, Position, Worker, Task
 
 
@@ -189,7 +189,7 @@ class TaskDetailView(LoginRequiredMixin, generic.DetailView):
 
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     model = Task
-    fields = "__all__"
+    form_class = TaskForm
     success_url = reverse_lazy("task:task-list")
 
 

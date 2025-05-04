@@ -1,6 +1,26 @@
 from django import forms
 
-from task.models import TaskType
+from task.models import Task
+
+
+class TaskForm(forms.ModelForm):
+    deadline = forms.DateTimeField(
+        widget=forms.DateTimeInput(
+            attrs={"type": "datetime-local"}
+        )
+    )
+
+    class Meta:
+        model = Task
+        fields = (
+            "name",
+            "description",
+            "deadline",
+            "is_completed",
+            "priority",
+            "task_type",
+            "assignees"
+        )
 
 
 class TaskTypeSearchForm(forms.Form):
