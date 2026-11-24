@@ -1,9 +1,12 @@
+from typing import Any
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import generic
+from django import forms
 
 from task.form import TaskTypeSearchForm, PositionSearchForm, WorkerSearchForm, TaskSearchForm, TaskForm
 from task.models import TaskType, Position, Worker, Task
@@ -81,7 +84,7 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Task.objects.all()
+        queryset = Position.objects.all()
         name = self.request.GET.get("name")
         if name:
             queryset = queryset.filter(name__icontains=name)
@@ -149,10 +152,23 @@ class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
     )
     success_url = reverse_lazy("task:worker-list")
 
+    def get_form(self, form_class=None):
+        form = super().get_form()
+        form.fields["password"].widget = forms.PasswordInput()
+        return form
+
+    def form_valid(self, form):
+        worker = form.save(commit=False)
+        worker.set_password(form.cleaned_data["password"])
+        worker.save()
+        form.save_m2m()
+        self.object = worker
+        return HttpResponseRedirect(self.get_success_url())
+
 
 class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Worker
-    fields = "__all__"
+    fields = ("username", "first_name", "last_name", "email", "position")
 
     def get_success_url(self):
         return reverse("task:worker-detail", kwargs={"pk": self.object.pk})
@@ -205,7 +221,7 @@ class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("task:task-list")
 
 
-class TaskCompleteStatusView(generic.View):
+class TaskCompleteStatusView(LoginRequiredMixin, generic.View):
     model = Task
 
     def post(self, request, pk):

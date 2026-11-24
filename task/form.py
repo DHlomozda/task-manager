@@ -1,6 +1,7 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
-from task.models import Task
+from task.models import Task, Worker
 
 
 class TaskForm(forms.ModelForm):
@@ -53,3 +54,13 @@ class TaskSearchForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={"placeholder": "Search by name"})
     )
+
+class WorkerCreateForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = Worker
+        fields = ("username", "first_name", "last_name", "email", "position")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for name in ("password1", "password2"):
+            self.fields[name].widget.attrs.update({"class": "form-control"})

@@ -11,18 +11,13 @@
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'js/burger-menu.js' %}">
-
 </head>
 
 <body>
 <div class="row">
   <div>
-    {% block extra_scripts %}
-      <script src="{% static 'js/burger-menu.js' %}"></script>
-      {% block sidebar %}
-        {% include "includes/header.html" %}
-      {% endblock %}
+    {% block sidebar %}
+      {% include "includes/header.html" %}
     {% endblock %}
 
   </div>
@@ -32,5 +27,8 @@
     {% endblock %}
   </div>
 </div>
+
+<script src="{% static 'js/burger-menu.js' %}"></script>
+{% block scripts %}{% endblock %}
 </body>
 </html>

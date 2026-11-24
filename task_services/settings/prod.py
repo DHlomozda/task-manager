@@ -9,6 +9,7 @@ ALLOWED_HOSTS = ["task-manager-0nd6.onrender.com"]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+ALLOWED_HOSTS += [h for h in os.environ.get("ALLOWED_HOSTS", "").split(",") if h]
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 # Database
@@ -24,6 +25,8 @@ DATABASES = {
         'PORT': int(os.environ.get('POSTGRES_DB_PORT')),
     }
 }
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# Set SECURE_SSL=False to serve over plain HTTP (e.g. local docker-compose)
+SECURE_SSL = os.environ.get("SECURE_SSL", "True").lower() == "true"
+SECURE_SSL_REDIRECT = SECURE_SSL
+SESSION_COOKIE_SECURE = SECURE_SSL
+CSRF_COOKIE_SECURE = SECURE_SSL
